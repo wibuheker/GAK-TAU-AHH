@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# Created By Wibu Heker
+# Powered By Rintod.DEV
+# https://web.facebook.com/wibuheker/
 import requests, re, warnings, sys, argparse
 from termcolor import colored
 from fake_useragent import UserAgent
