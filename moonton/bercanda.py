@@ -33,13 +33,13 @@ def doCheck(empass, delim = None):
             'sign': '',
             'params': {
                 'account': email,
-                'md5pwd': hashlib.md5(str(password)).hexdigest()
+                'md5pwd': hashlib.md5(str(password).encode('utf-8')).hexdigest()
             },
             'lang': 'en'
         }
         wibuSort = doDictSorting(wibuPost['params'])
         wibuSort += 'op=' + wibuPost['op']
-        wibuPost['sign'] = hashlib.md5(str(wibuSort)).hexdigest()
+        wibuPost['sign'] = hashlib.md5(str(wibuSort).encode('utf-8')).hexdigest()
         getData = requests.post('https://accountmtapi.mobilelegends.com/', data=json.dumps(wibuPost), headers={'User-Agent': UserAgent().random})
         wibuJson = json.loads(getData.text)
         if wibuJson['message'] == 'Error_Success':
